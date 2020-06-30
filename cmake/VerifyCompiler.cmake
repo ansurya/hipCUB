@@ -28,10 +28,10 @@
 # Find HIP package
 find_package(HIP 1.5.18263 REQUIRED) # 1.5.18263 is HIP version in ROCm 1.8.2
 
-if(HIP_PLATFORM STREQUAL "nvcc")
+if(HIP_PLATFORM STREQUAL "nvcc" OR HIP_PLATFORM STREQUAL "nvidia")
   include(SetupNVCC)
   message(STATUS "CUB will be used as hipCUB's backend.")
-elseif(HIP_PLATFORM STREQUAL "hcc")
+elseif(HIP_PLATFORM STREQUAL "hcc" OR HIP_PLATFORM STREQUAL "amd")
   if(NOT (CMAKE_CXX_COMPILER MATCHES ".*/hcc$" OR CMAKE_CXX_COMPILER MATCHES ".*/hipcc$"))
     message(FATAL_ERROR "On ROCm platform 'hcc' or 'clang' must be used as C++ compiler.")
   else()

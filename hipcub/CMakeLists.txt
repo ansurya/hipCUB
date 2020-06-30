@@ -39,7 +39,7 @@ target_include_directories(hipcub
     $<INSTALL_INTERFACE:hipcub/include/>
 )
 
-if(HIP_PLATFORM STREQUAL "hcc")
+if(HIP_PLATFORM STREQUAL "hcc" OR HIP_PLATFORM STREQUAL "amd")
   target_link_libraries(hipcub
     INTERFACE
       roc::rocprim_hip
